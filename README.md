@@ -1,1 +1,3 @@
 # tsm
+
+> tmux session manager
