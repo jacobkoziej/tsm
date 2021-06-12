@@ -23,6 +23,12 @@ package tmux
 // appropriate values will cause undefined behavior.
 var Commands = &TmuxCommands{
 	Tmux: "tmux",
+
+	Socket: ServerSocketCommands{
+		NameFlag:    "-L",
+		PathFlag:    "-S",
+		DefaultName: "default",
+	},
 }
 
 // TmuxCommands represents all the possible commands that can be executed by
@@ -30,6 +36,9 @@ var Commands = &TmuxCommands{
 type TmuxCommands struct {
 	// The path to the tmux executable.
 	Tmux string
+
+	// Available socket commands.
+	Socket ServerSocketCommands
 }
 
 // ServerSocketCommands represents all the possible socket commands that can be
