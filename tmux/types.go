@@ -15,3 +15,9 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 package tmux
+
+// tmux window properties
+type Window struct {
+	Name  string
+	Index uint
+}
