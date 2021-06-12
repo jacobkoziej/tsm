@@ -29,6 +29,13 @@ var Commands = &TmuxCommands{
 		PathFlag:    "-S",
 		DefaultName: "default",
 	},
+
+	NewSession: NewSessionCommands{
+		NewSession:      "new-session",
+		StartDirFlag:    "-c",
+		WindowNameFlag:  "-n",
+		SessionNameFlag: "-s",
+	},
 }
 
 // TmuxCommands represents all the possible commands that can be executed by
@@ -39,6 +46,9 @@ type TmuxCommands struct {
 
 	// Available socket commands.
 	Socket ServerSocketCommands
+
+	// Available new-session commands.
+	NewSession NewSessionCommands
 }
 
 // ServerSocketCommands represents all the possible socket commands that can be
