@@ -18,7 +18,10 @@ package tmux
 
 // tmux pane properties
 type Pane struct {
+	// The working directory of the tmux pane.
 	Dir string
+
+	// Commands to execute in the tmux pane.
 	Cmd []string
 }
 
