@@ -48,3 +48,12 @@ type Session struct {
 	// Windows containted in the tmux session.
 	Windows []Window
 }
+
+// tmux server properties
+type Server struct {
+	// The name of the tmux server.
+	Name string
+
+	// Sessions contained in the tmux server.
+	Sessions []Session
+}
