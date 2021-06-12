@@ -16,6 +16,15 @@
 
 package tmux
 
+// Commands is a pointer to the current set of commands that tsm will use when
+// interacting with tmux.
+//
+// The default values can be changed at any time.  Failure to set fields to
+// appropriate values will cause undefined behavior.
+var Commands = &TmuxCommands{
+	Tmux: "tmux",
+}
+
 // TmuxCommands represents all the possible commands that can be executed by
 // tsm.
 type TmuxCommands struct {
@@ -34,13 +43,4 @@ type ServerSocketCommands struct {
 
 	// The flag to specify the socket path.
 	PathFlag string
-}
-
-// Commands is a pointer to the current set of commands that tsm will use when
-// interacting with tmux.
-//
-// The default values can be changed at any time.  Failure to set fields to
-// appropriate values will cause undefined behavior.
-var Commands = &TmuxCommands{
-	Tmux: "tmux",
 }
