@@ -22,3 +22,12 @@ type TmuxCommands struct {
 	// The path to the tmux executable.
 	Tmux string
 }
+
+// Commands is a pointer to the current set of commands that tsm will use when
+// interacting with tmux.
+//
+// The default values can be changed at any time.  Failure to set fields to
+// appropriate values will cause undefined behavior.
+var Commands = &TmuxCommands{
+	Tmux: "tmux",
+}
