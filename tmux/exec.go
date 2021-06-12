@@ -15,3 +15,20 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 package tmux
+
+// Return appropriate server arguments.
+func (s *Server) GetServer() (arg []string) {
+	if s.Socket != "" {
+		return append(arg, Commands.Socket.PathFlag, s.Socket)
+	}
+
+	arg = append(arg, Commands.Socket.NameFlag)
+
+	if s.Name != "" {
+		arg = append(arg, s.Name)
+	} else {
+		arg = append(arg, Commands.Socket.DefaultName)
+	}
+
+	return arg
+}
