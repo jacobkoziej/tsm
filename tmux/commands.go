@@ -23,6 +23,19 @@ type TmuxCommands struct {
 	Tmux string
 }
 
+// ServerSocketCommands represents all the possible socket commands that can be
+// executed by tsm.
+type ServerSocketCommands struct {
+	// The name of the default socket.
+	DefaultName string
+
+	// The flag to specify the socket name.
+	NameFlag string
+
+	// The flag to specify the socket path.
+	PathFlag string
+}
+
 // Commands is a pointer to the current set of commands that tsm will use when
 // interacting with tmux.
 //
