@@ -23,6 +23,9 @@ type Pane struct {
 
 	// Commands to execute in the tmux pane.
 	Cmd []string
+
+	// Keys to send to the tmux pane.
+	Keys []string
 }
 
 // tmux window properties
