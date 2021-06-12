@@ -32,4 +32,7 @@ type Window struct {
 
 	// The index of the tmux window.
 	Index uint
+
+	// Panes contained in the tmux window.
+	Panes []Pane
 }
