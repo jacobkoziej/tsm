@@ -53,3 +53,19 @@ type ServerSocketCommands struct {
 	// The flag to specify the socket path.
 	PathFlag string
 }
+
+// NewSessionCommands represents all the possible new-session commands that can
+// be executed by tsm.
+type NewSessionCommands struct {
+	// The argument for creating a new session.
+	NewSession string
+
+	// The flag to specify the working directory.
+	StartDirFlag string
+
+	// The flag to specify the window name.
+	WindowNameFlag string
+
+	// The flag to specify the session name.
+	SessionNameFlag string
+}
