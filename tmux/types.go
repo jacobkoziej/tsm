@@ -16,6 +16,12 @@
 
 package tmux
 
+// tmux pane properties
+type Pane struct {
+	Dir string
+	Cmd []string
+}
+
 // tmux window properties
 type Window struct {
 	Name  string
