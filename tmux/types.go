@@ -54,6 +54,9 @@ type Server struct {
 	// The name of the tmux server.
 	Name string
 
+	// The path of the tmux server socket.
+	Socket string
+
 	// Sessions contained in the tmux server.
 	Sessions []Session
 }
