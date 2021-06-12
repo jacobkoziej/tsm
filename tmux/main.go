@@ -16,3 +16,8 @@
 
 // tmux command execution
 package tmux
+
+// Create a new tmux Server.
+func New() *Server {
+	return &Server{}
+}
