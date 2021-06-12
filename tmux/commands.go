@@ -35,6 +35,7 @@ var Commands = &TmuxCommands{
 		StartDirFlag:    "-c",
 		WindowNameFlag:  "-n",
 		SessionNameFlag: "-s",
+		DetachedFlag:    "-d",
 	},
 }
 
@@ -78,4 +79,7 @@ type NewSessionCommands struct {
 
 	// The flag to specify the session name.
 	SessionNameFlag string
+
+	// The flag to specify a detached state.
+	DetachedFlag string
 }
