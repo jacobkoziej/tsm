@@ -27,6 +27,9 @@ type Pane struct {
 
 // tmux window properties
 type Window struct {
-	Name  string
+	// The name of the tmux window.
+	Name string
+
+	// The index of the tmux window.
 	Index uint
 }
