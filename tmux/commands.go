@@ -15,3 +15,10 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 package tmux
+
+// TmuxCommands represents all the possible commands that can be executed by
+// tsm.
+type TmuxCommands struct {
+	// The path to the tmux executable.
+	Tmux string
+}
