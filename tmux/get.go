@@ -36,3 +36,22 @@ func (s *Server) GetSession(i int) (*Session, error) {
 
 	return &s.Sessions[i], nil
 }
+
+// Return a pointer to a specified Window in a receiver Session.
+func (s *Session) GetWindow(i int) (*Window, error) {
+	if s == nil {
+		return nil, errors.New("nil Session")
+	}
+
+	l := len(s.Windows)
+
+	if l == 0 {
+		return nil, errors.New("no Windows")
+	}
+
+	if i >= l || i < 0 {
+		return nil, errors.New("invalid index")
+	}
+
+	return &s.Windows[i], nil
+}
