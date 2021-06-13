@@ -55,3 +55,22 @@ func (s *Session) GetWindow(i int) (*Window, error) {
 
 	return &s.Windows[i], nil
 }
+
+// Return a pointer to a specified Pane in a receiver Window.
+func (w *Window) GetPane(i int) (*Pane, error) {
+	if w == nil {
+		return nil, errors.New("nil Window")
+	}
+
+	l := len(w.Panes)
+
+	if l == 0 {
+		return nil, errors.New("no Panes")
+	}
+
+	if i >= l || i < 0 {
+		return nil, errors.New("invalid index")
+	}
+
+	return &w.Panes[i], nil
+}
