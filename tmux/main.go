@@ -17,7 +17,20 @@
 // tmux command execution
 package tmux
 
+import "errors"
+
 // Create a new tmux Server.
 func New() *Server {
 	return &Server{}
+}
+
+// Create a new tmux Session.
+func (s *Server) NewSession(name string) error {
+	if s == nil {
+		return errors.New("nil Server")
+	}
+
+	s.Sessions = append(s.Sessions, Session{Name: name})
+
+	return nil
 }
