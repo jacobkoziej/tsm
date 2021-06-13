@@ -15,3 +15,24 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 package tmux
+
+import "errors"
+
+// Return a pointer to a specified Session in a receiver Server.
+func (s *Server) GetSession(i int) (*Session, error) {
+	if s == nil {
+		return nil, errors.New("nil Server")
+	}
+
+	l := len(s.Sessions)
+
+	if l == 0 {
+		return nil, errors.New("no Sessions")
+	}
+
+	if i >= l || i < 0 {
+		return nil, errors.New("invalid index")
+	}
+
+	return &s.Sessions[i], nil
+}
