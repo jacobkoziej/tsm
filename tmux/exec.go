@@ -16,10 +16,18 @@
 
 package tmux
 
+import "errors"
+
 // Return appropriate server arguments.
-func (s *Server) ServerArg() (arg []string) {
+func (s *Server) ServerArg() (arg []string, err error) {
+	if s == nil {
+		err = errors.New("nil Server")
+		return
+	}
+
 	if s.Socket != "" {
-		return append(arg, Commands.Socket.PathFlag, s.Socket)
+		arg = append(arg, Commands.Socket.PathFlag, s.Socket)
+		return
 	}
 
 	arg = append(arg, Commands.Socket.NameFlag)
@@ -30,5 +38,5 @@ func (s *Server) ServerArg() (arg []string) {
 		arg = append(arg, Commands.Socket.DefaultName)
 	}
 
-	return arg
+	return
 }
