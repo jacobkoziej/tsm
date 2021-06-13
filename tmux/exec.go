@@ -17,7 +17,7 @@
 package tmux
 
 // Return appropriate server arguments.
-func (s *Server) GetServer() (arg []string) {
+func (s *Server) ServerArg() (arg []string) {
 	if s.Socket != "" {
 		return append(arg, Commands.Socket.PathFlag, s.Socket)
 	}
