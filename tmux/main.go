@@ -45,3 +45,14 @@ func (s *Session) NewWindow(name string) error {
 
 	return nil
 }
+
+// Create a new tmux Pane.
+func (w *Window) NewPane(dir string, cmd []string, keys []string) error {
+	if w == nil {
+		return errors.New("nil Window")
+	}
+
+	w.Panes = append(w.Panes, Pane{dir, cmd, keys})
+
+	return nil
+}
