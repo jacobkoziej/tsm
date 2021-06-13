@@ -34,3 +34,14 @@ func (s *Server) NewSession(name string) error {
 
 	return nil
 }
+
+// Create a new tmux Window.
+func (s *Session) NewWindow(name string) error {
+	if s == nil {
+		return errors.New("nil Session")
+	}
+
+	s.Windows = append(s.Windows, Window{Name: name})
+
+	return nil
+}
