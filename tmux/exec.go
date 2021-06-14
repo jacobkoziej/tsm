@@ -40,3 +40,19 @@ func (s *Server) ArgServer() (arg []string, err error) {
 
 	return
 }
+
+// Return appropriate new-session arguments.
+func (s *Session) ArgNewSession() (arg []string, err error) {
+	if s == nil {
+		err = errors.New("nil Session")
+		return
+	}
+
+	arg = append(arg, Commands.NewSession.NewSession)
+
+	if s.Name != "" {
+		arg = append(arg, Commands.NewSession.SessionNameFlag, s.Name)
+	}
+
+	return
+}
