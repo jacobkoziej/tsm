@@ -15,3 +15,7 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 package tmux
+
+type tmuxError interface {
+	nilCheck() error
+}
