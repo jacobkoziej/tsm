@@ -16,6 +16,40 @@
 
 package tmux
 
+import "errors"
+
 type tmuxError interface {
 	nilCheck() error
+}
+
+func (s *Server) nilCheck() error {
+	if s == nil {
+		return errors.New("nil Server")
+	} else {
+		return nil
+	}
+}
+
+func (s *Session) nilCheck() error {
+	if s == nil {
+		return errors.New("nil Session")
+	} else {
+		return nil
+	}
+}
+
+func (w *Window) nilCheck() error {
+	if w == nil {
+		return errors.New("nil Window")
+	} else {
+		return nil
+	}
+}
+
+func (p *Pane) nilCheck() error {
+	if p == nil {
+		return errors.New("nil Pane")
+	} else {
+		return nil
+	}
 }
