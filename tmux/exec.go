@@ -20,8 +20,7 @@ import "errors"
 
 // Return appropriate server arguments.
 func (s *Server) ArgServer() (arg []string, err error) {
-	if s == nil {
-		err = errors.New("nil Server")
+	if err = s.nilCheck(); err != nil {
 		return
 	}
 
@@ -43,8 +42,7 @@ func (s *Server) ArgServer() (arg []string, err error) {
 
 // Return appropriate new-session arguments.
 func (s *Session) ArgNewSession() (arg []string, err error) {
-	if s == nil {
-		err = errors.New("nil Session")
+	if err = s.nilCheck(); err != nil {
 		return
 	}
 

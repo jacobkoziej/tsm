@@ -20,8 +20,8 @@ import "errors"
 
 // Return a pointer to a specified Session in a receiver Server.
 func (s *Server) GetSession(i int) (*Session, error) {
-	if s == nil {
-		return nil, errors.New("nil Server")
+	if err := s.nilCheck(); err != nil {
+		return nil, err
 	}
 
 	l := len(s.Sessions)
@@ -39,8 +39,8 @@ func (s *Server) GetSession(i int) (*Session, error) {
 
 // Return a pointer to a specified Window in a receiver Session.
 func (s *Session) GetWindow(i int) (*Window, error) {
-	if s == nil {
-		return nil, errors.New("nil Session")
+	if err := s.nilCheck(); err != nil {
+		return nil, err
 	}
 
 	l := len(s.Windows)
@@ -58,8 +58,8 @@ func (s *Session) GetWindow(i int) (*Window, error) {
 
 // Return a pointer to a specified Pane in a receiver Window.
 func (w *Window) GetPane(i int) (*Pane, error) {
-	if w == nil {
-		return nil, errors.New("nil Window")
+	if err := w.nilCheck(); err != nil {
+		return nil, err
 	}
 
 	l := len(w.Panes)
