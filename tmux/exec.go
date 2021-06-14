@@ -19,7 +19,7 @@ package tmux
 import "errors"
 
 // Return appropriate server arguments.
-func (s *Server) ServerArg() (arg []string, err error) {
+func (s *Server) ArgServer() (arg []string, err error) {
 	if s == nil {
 		err = errors.New("nil Server")
 		return
