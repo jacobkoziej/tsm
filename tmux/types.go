@@ -38,6 +38,9 @@ type Window struct {
 
 	// Panes contained in the tmux window.
 	Panes []Pane
+
+	// Count of panes containted in the tmux window.
+	PaneCnt int
 }
 
 // tmux session properties
@@ -47,6 +50,9 @@ type Session struct {
 
 	// Windows containted in the tmux session.
 	Windows []Window
+
+	// Count of windows containted in the tmux session.
+	WindowCnt int
 }
 
 // tmux server properties
@@ -59,4 +65,7 @@ type Server struct {
 
 	// Sessions contained in the tmux server.
 	Sessions []Session
+
+	// Count of sessions containted in the tmux server.
+	SessionCnt int
 }
