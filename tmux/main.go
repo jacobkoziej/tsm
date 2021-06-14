@@ -20,8 +20,8 @@ package tmux
 import "errors"
 
 // Create a new tmux Server.
-func New() *Server {
-	return &Server{}
+func New(name string, socket string) *Server {
+	return &Server{Name: name, Socket: socket}
 }
 
 // Create a new tmux Session.
