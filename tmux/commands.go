@@ -83,3 +83,19 @@ type NewSessionCommands struct {
 	// The flag to specify a detached state.
 	DetachedFlag string
 }
+
+// NewWindowCommands represents all the possible new-window commands that can
+// be executed by tsm.
+type NewWindowCommands struct {
+	// The argument for creating a new window.
+	NewWindow string
+
+	// The flag to specify the working directory.
+	StartDirFlag string
+
+	// The flag to specify the window name.
+	WindowNameFlag string
+
+	// The flag to specify the target window.
+	TargetWindowFlag string
+}
