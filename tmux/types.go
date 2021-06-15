@@ -34,6 +34,15 @@ type InitShellCmd struct {
 	Cmd string
 }
 
+// name properties
+type Name struct {
+	// Specify whether to set the name.
+	Set bool
+
+	// The name to set.
+	Name string
+}
+
 // tmux pane properties
 type Pane struct {
 	startDir     StartDir
