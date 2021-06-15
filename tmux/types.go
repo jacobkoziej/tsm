@@ -25,6 +25,15 @@ type StartDir struct {
 	Dir string
 }
 
+// initial shell command properties
+type InitShellCmd struct {
+	// Specify whether to execute the shell command.
+	Exec bool
+
+	// The shell command.
+	Cmd string
+}
+
 // tmux pane properties
 type Pane struct {
 	// The working directory of the tmux pane.
