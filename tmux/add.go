@@ -34,17 +34,17 @@ func (s *Server) AddSession(sn *Session) (err error) {
 
 // Add an additional window to an existing session.
 func (s *Session) AddWindow(w *Window) (err error) {
-	if err = s.nilCheck(); err != nil {
+	err = s.nilCheck()
+	if err != nil {
 		return
 	}
 
-	if err = w.nilCheck(); err != nil {
+	err = w.nilCheck()
+	if err != nil {
 		return
 	}
 
-	s.Windows = append(s.Windows, *w)
-	s.WindowCnt++
-
+	s.window = append(s.window, w)
 	return
 }
 

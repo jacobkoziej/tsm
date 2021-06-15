@@ -40,14 +40,19 @@ func (s *Server) ArgServer() (arg []string, err error) {
 
 // Return appropriate new-session arguments.
 func (s *Session) ArgNewSession() (arg []string, err error) {
-	if err = s.nilCheck(); err != nil {
+	err = s.nilCheck()
+	if err != nil {
 		return
 	}
 
 	arg = append(arg, Commands.NewSession.NewSession)
 
-	if s.Name != "" {
-		arg = append(arg, Commands.NewSession.SessionNameFlag, s.Name)
+	if s.name.Set {
+		arg = append(
+			arg,
+			Commands.NewSession.SessionNameFlag,
+			s.name.Name,
+		)
 	}
 
 	return

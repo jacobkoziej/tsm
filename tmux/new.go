@@ -16,23 +16,18 @@
 
 package tmux
 
-import "errors"
-
 // Create a new tmux Server.
 func New(name string, socket string) *Server {
 	return &Server{Name: name, Socket: socket}
 }
 
 // Create a new tmux Session.
-func (s *Server) NewSession(name string) error {
-	if s == nil {
-		return errors.New("nil Server")
+func NewSession(name Name, window *Window) *Session {
+	if window == nil {
+		return nil
 	}
 
-	s.Sessions = append(s.Sessions, Session{Name: name})
-	s.SessionCnt++
-
-	return nil
+	return &Session{name, []*Window{window}}
 }
 
 // Create a new tmux Window.

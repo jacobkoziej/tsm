@@ -57,14 +57,8 @@ type Window struct {
 
 // tmux session properties
 type Session struct {
-	// The name of the tmux session.
-	Name string
-
-	// Windows containted in the tmux session.
-	Windows []Window
-
-	// Count of windows containted in the tmux session.
-	WindowCnt int
+	name   Name
+	window []*Window
 }
 
 // tmux server properties
