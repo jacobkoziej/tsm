@@ -48,11 +48,20 @@ func NewWindow(n *Name, p *Pane) *Window {
 }
 
 // Create a new tmux Pane.
-func NewPane(startDir StartDir, initShellCmd InitShellCmd) *Pane {
-	return &Pane{startDir, initShellCmd}
+func NewPane(s *StartDir, i InitShellCmd) *Pane {
+	if s == nil {
+		return nil
+	}
+
+	return &Pane{s, i}
 }
 
 // Create a new tmux Name.
 func NewName(set bool, name string) *Name {
 	return &Name{set, name}
+}
+
+// Create a new tmux StartDir.
+func NewStartDir(set bool, dir string) *StartDir {
+	return &StartDir{set, dir}
 }

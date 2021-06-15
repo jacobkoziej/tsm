@@ -18,11 +18,8 @@ package tmux
 
 // start directory properties
 type StartDir struct {
-	// Specify whether to set the start directory.
-	Set bool
-
-	// The start directory.
-	Dir string
+	set bool
+	dir string
 }
 
 // initial shell command properties
@@ -42,7 +39,7 @@ type Name struct {
 
 // tmux pane properties
 type Pane struct {
-	startDir     StartDir
+	startDir     *StartDir
 	initShellCmd InitShellCmd
 }
 
