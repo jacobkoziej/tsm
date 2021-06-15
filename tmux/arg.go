@@ -18,19 +18,24 @@ package tmux
 
 // Return appropriate server arguments.
 func (s *Server) ArgServer() (arg []string, err error) {
-	if err = s.nilCheck(); err != nil {
+	err = s.nilCheck()
+	if err != nil {
 		return
 	}
 
-	if s.Socket != "" {
-		arg = append(arg, Commands.Socket.PathFlag, s.Socket)
+	if s.socket.exists {
+		arg = append(
+			arg,
+			Commands.Socket.PathFlag,
+			s.socket.path,
+		)
 		return
 	}
 
 	arg = append(arg, Commands.Socket.NameFlag)
 
-	if s.Name != "" {
-		arg = append(arg, s.Name)
+	if s.name.set {
+		arg = append(arg, s.name.name)
 	} else {
 		arg = append(arg, Commands.Socket.DefaultName)
 	}

@@ -19,22 +19,26 @@ package tmux
 import "errors"
 
 // Return a pointer to a specified Session in a receiver Server.
-func (s *Server) GetSession(i int) (*Session, error) {
-	if err := s.nilCheck(); err != nil {
-		return nil, err
+func (s *Server) GetSession(i int) (sn *Session, err error) {
+	err = s.nilCheck()
+	if err != nil {
+		return
 	}
 
-	l := len(s.Sessions)
+	l := len(s.session)
 
 	if l == 0 {
-		return nil, errors.New("no Sessions")
+		err = errors.New("no Session(s)")
+		return
 	}
 
 	if i >= l || i < 0 {
-		return nil, errors.New("invalid index")
+		err = errors.New("invalid index")
+		return
 	}
 
-	return &s.Sessions[i], nil
+	sn = s.session[i]
+	return
 }
 
 // Return a pointer to a specified Window in a receiver Session.

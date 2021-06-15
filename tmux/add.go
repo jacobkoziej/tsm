@@ -18,17 +18,17 @@ package tmux
 
 // Add an additional session to an existing server.
 func (s *Server) AddSession(sn *Session) (err error) {
-	if err = s.nilCheck(); err != nil {
+	err = s.nilCheck()
+	if err != nil {
 		return
 	}
 
-	if err = sn.nilCheck(); err != nil {
+	err = sn.nilCheck()
+	if err != nil {
 		return
 	}
 
-	s.Sessions = append(s.Sessions, *sn)
-	s.SessionCnt++
-
+	s.session = append(s.session, sn)
 	return
 }
 

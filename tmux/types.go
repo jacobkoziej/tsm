@@ -60,15 +60,7 @@ type Session struct {
 
 // tmux server properties
 type Server struct {
-	// The name of the tmux server.
-	Name string
-
-	// The path of the tmux server socket.
-	Socket string
-
-	// Sessions contained in the tmux server.
-	Sessions []Session
-
-	// Count of sessions containted in the tmux server.
-	SessionCnt int
+	name    *Name
+	socket  *Socket
+	session []*Session
 }

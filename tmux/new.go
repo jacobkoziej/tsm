@@ -17,8 +17,20 @@
 package tmux
 
 // Create a new tmux Server.
-func New(name string, socket string) *Server {
-	return &Server{Name: name, Socket: socket}
+func NewServer(n *Name, sock *Socket, s *Session) *Server {
+	if n == nil {
+		return nil
+	}
+
+	if sock == nil {
+		return nil
+	}
+
+	if s == nil {
+		return nil
+	}
+
+	return &Server{n, sock, []*Session{s}}
 }
 
 // Create a new tmux Session.
