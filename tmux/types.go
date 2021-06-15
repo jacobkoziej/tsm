@@ -36,14 +36,8 @@ type InitShellCmd struct {
 
 // tmux pane properties
 type Pane struct {
-	// The working directory of the tmux pane.
-	Dir string
-
-	// Commands to execute in the tmux pane.
-	Cmd []string
-
-	// Keys to send to the tmux pane.
-	Keys []string
+	startDir     StartDir
+	initShellCmd InitShellCmd
 }
 
 // tmux window properties
