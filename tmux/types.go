@@ -34,6 +34,12 @@ type Name struct {
 	name string
 }
 
+// socket properties
+type Socket struct {
+	exists bool
+	path   string
+}
+
 // tmux pane properties
 type Pane struct {
 	startDir     *StartDir

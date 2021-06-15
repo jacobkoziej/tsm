@@ -56,6 +56,11 @@ func NewPane(s *StartDir, i *InitShellCmd) *Pane {
 	return &Pane{s, i}
 }
 
+// Create a new tmux Socket.
+func NewSocket(exist bool, path string) *Socket {
+	return &Socket{exist, path}
+}
+
 // Create a new tmux Name.
 func NewName(set bool, name string) *Name {
 	return &Name{set, name}
