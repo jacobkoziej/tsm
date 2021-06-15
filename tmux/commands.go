@@ -37,6 +37,13 @@ var Commands = &TmuxCommands{
 		SessionNameFlag: "-s",
 		DetachedFlag:    "-d",
 	},
+
+	NewWindow: NewWindowCommands{
+		NewWindow:        "new-window",
+		StartDirFlag:     "-c",
+		WindowNameFlag:   "-n",
+		TargetWindowFlag: "-t",
+	},
 }
 
 // TmuxCommands represents all the possible commands that can be executed by
@@ -50,6 +57,9 @@ type TmuxCommands struct {
 
 	// Available new-session commands.
 	NewSession NewSessionCommands
+
+	// Available new-window commands.
+	NewWindow NewWindowCommands
 }
 
 // ServerSocketCommands represents all the possible socket commands that can be
