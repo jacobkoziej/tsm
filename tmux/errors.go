@@ -53,3 +53,35 @@ func (p *Pane) nilCheck() error {
 		return nil
 	}
 }
+
+func (s *Socket) nilCheck() error {
+	if s == nil {
+		return errors.New("nil Socket")
+	} else {
+		return nil
+	}
+}
+
+func (n *Name) nilCheck() error {
+	if n == nil {
+		return errors.New("nil Name")
+	} else {
+		return nil
+	}
+}
+
+func (i *InitShellCmd) nilCheck() error {
+	if i == nil {
+		return errors.New("nil InitShellCmd")
+	} else {
+		return nil
+	}
+}
+
+func (s *StartDir) nilCheck() error {
+	if s == nil {
+		return errors.New("nil StartDir")
+	} else {
+		return nil
+	}
+}
