@@ -57,20 +57,24 @@ func (s *Session) GetWindow(i int) (*Window, error) {
 }
 
 // Return a pointer to a specified Pane in a receiver Window.
-func (w *Window) GetPane(i int) (*Pane, error) {
-	if err := w.nilCheck(); err != nil {
-		return nil, err
+func (w *Window) GetPane(i int) (p *Pane, err error) {
+	err = w.nilCheck()
+	if err != nil {
+		return
 	}
 
-	l := len(w.Panes)
+	l := len(w.pane)
 
 	if l == 0 {
-		return nil, errors.New("no Panes")
+		err = errors.New("no Pane(s)")
+		return
 	}
 
 	if i >= l || i < 0 {
-		return nil, errors.New("invalid index")
+		err = errors.New("invalid index")
+		return
 	}
 
-	return &w.Panes[i], nil
+	p = w.pane[i]
+	return
 }

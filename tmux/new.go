@@ -36,15 +36,12 @@ func (s *Server) NewSession(name string) error {
 }
 
 // Create a new tmux Window.
-func (s *Session) NewWindow(name string) error {
-	if s == nil {
-		return errors.New("nil Session")
+func NewWindow(name Name, pane *Pane) *Window {
+	if pane == nil {
+		return nil
 	}
 
-	s.Windows = append(s.Windows, Window{Name: name})
-	s.WindowCnt++
-
-	return nil
+	return &Window{name, []*Pane{pane}}
 }
 
 // Create a new tmux Pane.

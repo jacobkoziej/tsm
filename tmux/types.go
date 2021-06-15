@@ -51,17 +51,8 @@ type Pane struct {
 
 // tmux window properties
 type Window struct {
-	// The name of the tmux window.
-	Name string
-
-	// The index of the tmux window.
-	Index uint
-
-	// Panes contained in the tmux window.
-	Panes []Pane
-
-	// Count of panes containted in the tmux window.
-	PaneCnt int
+	name Name
+	pane []*Pane
 }
 
 // tmux session properties
