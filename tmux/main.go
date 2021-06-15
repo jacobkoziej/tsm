@@ -31,6 +31,7 @@ func (s *Server) NewSession(name string) error {
 	}
 
 	s.Sessions = append(s.Sessions, Session{Name: name})
+	s.SessionCnt++
 
 	return nil
 }
@@ -42,6 +43,7 @@ func (s *Session) NewWindow(name string) error {
 	}
 
 	s.Windows = append(s.Windows, Window{Name: name})
+	s.WindowCnt++
 
 	return nil
 }
@@ -53,6 +55,7 @@ func (w *Window) NewPane(dir string, cmd []string, keys []string) error {
 	}
 
 	w.Panes = append(w.Panes, Pane{dir, cmd, keys})
+	w.PaneCnt++
 
 	return nil
 }
