@@ -47,11 +47,11 @@ func (s *Session) ArgNewSession() (arg []string, err error) {
 
 	arg = append(arg, Commands.NewSession.NewSession)
 
-	if s.name.Set {
+	if s.name.set {
 		arg = append(
 			arg,
 			Commands.NewSession.SessionNameFlag,
-			s.name.Name,
+			s.name.name,
 		)
 	}
 

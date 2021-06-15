@@ -22,7 +22,11 @@ func New(name string, socket string) *Server {
 }
 
 // Create a new tmux Session.
-func NewSession(name Name, window *Window) *Session {
+func NewSession(name *Name, window *Window) *Session {
+	if name == nil {
+		return nil
+	}
+
 	if window == nil {
 		return nil
 	}
@@ -31,7 +35,11 @@ func NewSession(name Name, window *Window) *Session {
 }
 
 // Create a new tmux Window.
-func NewWindow(name Name, pane *Pane) *Window {
+func NewWindow(name *Name, pane *Pane) *Window {
+	if name == nil {
+		return nil
+	}
+
 	if pane == nil {
 		return nil
 	}
@@ -42,4 +50,9 @@ func NewWindow(name Name, pane *Pane) *Window {
 // Create a new tmux Pane.
 func NewPane(startDir StartDir, initShellCmd InitShellCmd) *Pane {
 	return &Pane{startDir, initShellCmd}
+}
+
+// Create a new tmux Name.
+func NewName(set bool, name string) *Name {
+	return &Name{set, name}
 }

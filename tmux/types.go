@@ -36,11 +36,8 @@ type InitShellCmd struct {
 
 // name properties
 type Name struct {
-	// Specify whether to set the name.
-	Set bool
-
-	// The name to set.
-	Name string
+	set  bool
+	name string
 }
 
 // tmux pane properties
@@ -51,13 +48,13 @@ type Pane struct {
 
 // tmux window properties
 type Window struct {
-	name Name
+	name *Name
 	pane []*Pane
 }
 
 // tmux session properties
 type Session struct {
-	name   Name
+	name   *Name
 	window []*Window
 }
 
