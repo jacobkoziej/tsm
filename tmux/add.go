@@ -47,3 +47,19 @@ func (s *Session) AddWindow(w *Window) (err error) {
 
 	return
 }
+
+// Add an additional pane to an existing window.
+func (w *Window) AddPane(p *Pane) (err error) {
+	if err = w.nilCheck(); err != nil {
+		return
+	}
+
+	if err = p.nilCheck(); err != nil {
+		return
+	}
+
+	w.Panes = append(w.Panes, *p)
+	w.PaneCnt++
+
+	return
+}
