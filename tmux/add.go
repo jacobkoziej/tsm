@@ -15,3 +15,19 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 package tmux
+
+// Add an additional session to an existing server.
+func (s *Server) AddSession(sn *Session) (err error) {
+	if err = s.nilCheck(); err != nil {
+		return
+	}
+
+	if err = sn.nilCheck(); err != nil {
+		return
+	}
+
+	s.Sessions = append(s.Sessions, *sn)
+	s.SessionCnt++
+
+	return
+}
