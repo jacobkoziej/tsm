@@ -22,29 +22,29 @@ func New(name string, socket string) *Server {
 }
 
 // Create a new tmux Session.
-func NewSession(name *Name, window *Window) *Session {
-	if name == nil {
+func NewSession(n *Name, w *Window) *Session {
+	if n == nil {
 		return nil
 	}
 
-	if window == nil {
+	if w == nil {
 		return nil
 	}
 
-	return &Session{name, []*Window{window}}
+	return &Session{n, []*Window{w}}
 }
 
 // Create a new tmux Window.
-func NewWindow(name *Name, pane *Pane) *Window {
-	if name == nil {
+func NewWindow(n *Name, p *Pane) *Window {
+	if n == nil {
 		return nil
 	}
 
-	if pane == nil {
+	if p == nil {
 		return nil
 	}
 
-	return &Window{name, []*Pane{pane}}
+	return &Window{n, []*Pane{p}}
 }
 
 // Create a new tmux Pane.
