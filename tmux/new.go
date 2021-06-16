@@ -30,7 +30,7 @@ func NewServer(n *Name, sock *Socket, s *Session) *Server {
 		return nil
 	}
 
-	return &Server{n, sock, []*Session{s}}
+	return &Server{name: n, socket: sock, session: []*Session{s}}
 }
 
 // Create a new tmux Session.
@@ -43,7 +43,7 @@ func NewSession(n *Name, w *Window) *Session {
 		return nil
 	}
 
-	return &Session{n, []*Window{w}}
+	return &Session{name: n, window: []*Window{w}}
 }
 
 // Create a new tmux Window.
@@ -56,7 +56,7 @@ func NewWindow(n *Name, p *Pane) *Window {
 		return nil
 	}
 
-	return &Window{n, []*Pane{p}}
+	return &Window{name: n, pane: []*Pane{p}}
 }
 
 // Create a new tmux Pane.
@@ -65,7 +65,7 @@ func NewPane(s *StartDir, i *InitShellCmd) *Pane {
 		return nil
 	}
 
-	return &Pane{s, i}
+	return &Pane{startDir: s, initShellCmd: i}
 }
 
 // Create a new tmux Socket.

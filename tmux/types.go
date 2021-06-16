@@ -44,18 +44,21 @@ type Socket struct {
 type Pane struct {
 	startDir     *StartDir
 	initShellCmd *InitShellCmd
+	done         bool
 }
 
 // tmux window properties
 type Window struct {
 	name *Name
 	pane []*Pane
+	done bool
 }
 
 // tmux session properties
 type Session struct {
 	name   *Name
 	window []*Window
+	done   bool
 }
 
 // tmux server properties
@@ -63,4 +66,5 @@ type Server struct {
 	name    *Name
 	socket  *Socket
 	session []*Session
+	done    bool
 }
