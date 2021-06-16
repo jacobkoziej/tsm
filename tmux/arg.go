@@ -60,5 +60,40 @@ func (s *Session) ArgNewSession() (arg []string, err error) {
 		)
 	}
 
+	w, err := s.GetWindow(0)
+	if err != nil {
+		arg = nil
+		return
+	}
+
+	if w.name.set {
+		arg = append(
+			arg,
+			Commands.NewSession.WindowNameFlag,
+			w.name.name,
+		)
+	}
+
+	p, err := w.GetPane(0)
+	if err != nil {
+		arg = nil
+		return
+	}
+
+	if p.startDir.set {
+		arg = append(
+			arg,
+			Commands.NewSession.StartDirFlag,
+			p.startDir.dir,
+		)
+	}
+
+	if p.initShellCmd.exec {
+		arg = append(
+			arg,
+			p.initShellCmd.cmd,
+		)
+	}
+
 	return
 }
