@@ -15,3 +15,12 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 package tmux
+
+import "os/exec"
+
+func Exec(tmux string, arg []string) (err error) {
+	cmd := exec.Command(tmux, arg...)
+	err = cmd.Run()
+
+	return
+}
