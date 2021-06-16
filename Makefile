@@ -21,6 +21,13 @@ BIN_NAME  ?= tsm
 BUILD_DIR ?= build
 SOURCES    = cmd/tsm/*
 
+TAG    = $(shell git describe  --abbrev=0        2> /dev/null)
+BRANCH = $(shell git rev-parse --abbrev-ref HEAD 2> /dev/null)
+COMMIT = $(shell git rev-parse --short      HEAD 2> /dev/null)
+
+LDFLAGS  = "-X main.tag=$(TAG) -X main.branch=$(BRANCH) -X main.commit=$(COMMIT)"
+GOFLAGS += -ldflags $(LDFLAGS)
+
 
 .PHONY: all
 all: build
