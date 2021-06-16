@@ -50,7 +50,11 @@ func (s *Session) ArgNewSession() (arg []string, err error) {
 		return
 	}
 
-	arg = append(arg, Commands.NewSession.NewSession)
+	arg = append(
+		arg,
+		Commands.NewSession.NewSession,
+		Commands.NewSession.DetachedFlag,
+	)
 
 	if s.name.set {
 		arg = append(
