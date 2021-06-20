@@ -15,3 +15,17 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 package tmux
+
+// Window represents a tmux window to create.
+type Window struct {
+	nextIndexUp    bool
+	makeCurrent    bool
+	destroyTarget  bool
+	printInfo      bool
+	startDirectory *string
+	environment    []string
+	format         *string
+	windowName     *string
+	targetWindow   *string
+	shellCommand   *string
+}
