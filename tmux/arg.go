@@ -16,6 +16,71 @@
 
 package tmux
 
+// ArgNewSession generates arguments to create a new session from the Session
+// receiver.
+func (s *Session) ArgNewSession() (arg []string) {
+	if s == nil {
+		return
+	}
+
+	arg = append(arg, "new-session")
+
+	if s.behaveAttachSession {
+		arg = append(arg, "-A")
+	}
+
+	// session isn't attached by default
+	if !s.attachSession {
+		arg = append(arg, "-d")
+	}
+
+	if s.detachClients {
+		arg = append(arg, "-D")
+	}
+
+	if s.ignoreEnvironment {
+		arg = append(arg, "-E")
+	}
+
+	if s.printInfo {
+		arg = append(arg, "-P")
+	}
+
+	if s.detachClient {
+		arg = append(arg, "-X")
+	}
+
+	if s.startDirectory != nil {
+		arg = append(arg, "-c", *s.startDirectory)
+	}
+
+	if s.format != nil {
+		arg = append(arg, "-F", *s.format)
+	}
+
+	if s.windowName != nil {
+		arg = append(arg, "-n", *s.windowName)
+	}
+
+	if s.groupName != nil {
+		arg = append(arg, "-t", *s.groupName)
+	}
+
+	if s.width != nil {
+		arg = append(arg, "-x", *s.width)
+	}
+
+	if s.height != nil {
+		arg = append(arg, "-y", *s.height)
+	}
+
+	if s.shellCommand != nil {
+		arg = append(arg, *s.shellCommand)
+	}
+
+	return
+}
+
 // ArgNewWindow generates arguments to create a new window from the Window
 // receiver.
 func (w *Window) ArgNewWindow() (arg []string) {
