@@ -16,6 +16,24 @@
 
 package tmux
 
+// Session represents a tmux session to create.
+type Session struct {
+	behaveAttachSession bool
+	attachSession       bool
+	detachClients       bool
+	ignoreEnvironment   bool
+	printInfo           bool
+	detachClient        bool
+	startDirectory      *string
+	format              *string
+	windowName          *string
+	sessionName         *string
+	groupName           *string
+	width               *string
+	height              *string
+	shellCommand        *string
+}
+
 // Window represents a tmux window to create.
 type Window struct {
 	nextIndexUp    bool
