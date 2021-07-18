@@ -131,3 +131,68 @@ func (w *Window) New() (arg []string) {
 
 	return
 }
+
+// New generates arguments to create a new pane from the Pane receiver.
+func (w *Pane) New() (arg []string) {
+	if w == nil {
+		return
+	}
+
+	arg = append(arg, "split-window")
+
+	if w.AboveTarget {
+		arg = append(arg, "-b")
+	}
+
+	if w.DontMakeCurrent {
+		arg = append(arg, "-d")
+	}
+
+	if w.FullWindow {
+		arg = append(arg, "-f")
+	}
+
+	if w.HorizontalSplit {
+		arg = append(arg, "-h")
+	}
+
+	if w.ForwardStdin {
+		arg = append(arg, "-I")
+	}
+
+	if w.VerticalSplit {
+		arg = append(arg, "-v")
+	}
+
+	if w.PrintInfo {
+		arg = append(arg, "-P")
+	}
+
+	if w.StartDirectory != nil {
+		arg = append(arg, "-c", *w.StartDirectory)
+	}
+
+	if w.Environment != nil {
+		for _, env := range w.Environment {
+			arg = append(arg, "-e", env)
+		}
+	}
+
+	if w.Size != nil {
+		arg = append(arg, "-l", *w.Size)
+	}
+
+	if w.TargetPane != nil {
+		arg = append(arg, "-t", *w.TargetPane)
+	}
+
+	if w.Format != nil {
+		arg = append(arg, "-F", *w.Format)
+	}
+
+	if w.ShellCommand != nil {
+		arg = append(arg, *w.ShellCommand)
+	}
+
+	return
+}
