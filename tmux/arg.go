@@ -1,4 +1,4 @@
-// arg.go -- argument generation for tmux
+// arg.go -- tmux argument generation
 // Copyright (C) 2021  Jacob Koziej <jacobkoziej@gmail.com>
 //
 // This program is free software: you can redistribute it and/or modify
@@ -16,87 +16,182 @@
 
 package tmux
 
-// Return appropriate server arguments.
-func (s *Server) ArgServer() (arg []string, err error) {
-	err = s.nilCheck()
-	if err != nil {
+// New generates arguments to create a new session from the Session receiver.
+func (s *Session) New() (arg []string) {
+	if s == nil {
 		return
 	}
 
-	if s.socket.exists {
-		arg = append(
-			arg,
-			Commands.Socket.PathFlag,
-			s.socket.path,
-		)
-		return
+	arg = append(arg, "new-session")
+
+	if s.BehaveAttachSession {
+		arg = append(arg, "-A")
 	}
 
-	arg = append(arg, Commands.Socket.NameFlag)
+	if s.DetachSession {
+		arg = append(arg, "-d")
+	}
 
-	if s.name.set {
-		arg = append(arg, s.name.name)
-	} else {
-		arg = append(arg, Commands.Socket.DefaultName)
+	if s.DetachClients {
+		arg = append(arg, "-D")
+	}
+
+	if s.IgnoreEnvironment {
+		arg = append(arg, "-E")
+	}
+
+	if s.PrintInfo {
+		arg = append(arg, "-P")
+	}
+
+	if s.DetachClient {
+		arg = append(arg, "-X")
+	}
+
+	if s.StartDirectory != nil {
+		arg = append(arg, "-c", *s.StartDirectory)
+	}
+
+	if s.Format != nil {
+		arg = append(arg, "-F", *s.Format)
+	}
+
+	if s.WindowName != nil {
+		arg = append(arg, "-n", *s.WindowName)
+	}
+
+	if s.GroupName != nil {
+		arg = append(arg, "-t", *s.GroupName)
+	}
+
+	if s.Width != nil {
+		arg = append(arg, "-x", *s.Width)
+	}
+
+	if s.Height != nil {
+		arg = append(arg, "-y", *s.Height)
+	}
+
+	if s.ShellCommand != nil {
+		arg = append(arg, *s.ShellCommand)
 	}
 
 	return
 }
 
-// Return appropriate new-session arguments.
-func (s *Session) ArgNewSession() (arg []string, err error) {
-	err = s.nilCheck()
-	if err != nil {
+// New generates arguments to create a new window from the Window receiver.
+func (w *Window) New() (arg []string) {
+	if w == nil {
 		return
 	}
 
-	arg = append(
-		arg,
-		Commands.NewSession.NewSession,
-		Commands.NewSession.DetachedFlag,
-	)
+	arg = append(arg, "new-window")
 
-	if s.name.set {
-		arg = append(
-			arg,
-			Commands.NewSession.SessionNameFlag,
-			s.name.name,
-		)
+	if w.NextIndexUp {
+		arg = append(arg, "-a")
 	}
 
-	w, err := s.GetWindow(0)
-	if err != nil {
-		arg = nil
+	if w.DontMakeCurrent {
+		arg = append(arg, "-d")
+	}
+
+	if w.DestroyTarget {
+		arg = append(arg, "-k")
+	}
+
+	if w.PrintInfo {
+		arg = append(arg, "-P")
+	}
+
+	if w.StartDirectory != nil {
+		arg = append(arg, "-c", *w.StartDirectory)
+	}
+
+	if w.Environment != nil {
+		for _, env := range w.Environment {
+			arg = append(arg, "-e", env)
+		}
+	}
+
+	if w.Format != nil {
+		arg = append(arg, "-F", *w.Format)
+	}
+
+	if w.WindowName != nil {
+		arg = append(arg, "-n", *w.WindowName)
+	}
+
+	if w.TargetWindow != nil {
+		arg = append(arg, "-t", *w.TargetWindow)
+	}
+
+	if w.ShellCommand != nil {
+		arg = append(arg, *w.ShellCommand)
+	}
+
+	return
+}
+
+// New generates arguments to create a new pane from the Pane receiver.
+func (w *Pane) New() (arg []string) {
+	if w == nil {
 		return
 	}
 
-	if w.name.set {
-		arg = append(
-			arg,
-			Commands.NewSession.WindowNameFlag,
-			w.name.name,
-		)
+	arg = append(arg, "split-window")
+
+	if w.AboveTarget {
+		arg = append(arg, "-b")
 	}
 
-	p, err := w.GetPane(0)
-	if err != nil {
-		arg = nil
-		return
+	if w.DontMakeCurrent {
+		arg = append(arg, "-d")
 	}
 
-	if p.startDir.set {
-		arg = append(
-			arg,
-			Commands.NewSession.StartDirFlag,
-			p.startDir.dir,
-		)
+	if w.FullWindow {
+		arg = append(arg, "-f")
 	}
 
-	if p.initShellCmd.exec {
-		arg = append(
-			arg,
-			p.initShellCmd.cmd,
-		)
+	if w.HorizontalSplit {
+		arg = append(arg, "-h")
+	}
+
+	if w.ForwardStdin {
+		arg = append(arg, "-I")
+	}
+
+	if w.VerticalSplit {
+		arg = append(arg, "-v")
+	}
+
+	if w.PrintInfo {
+		arg = append(arg, "-P")
+	}
+
+	if w.StartDirectory != nil {
+		arg = append(arg, "-c", *w.StartDirectory)
+	}
+
+	if w.Environment != nil {
+		for _, env := range w.Environment {
+			arg = append(arg, "-e", env)
+		}
+	}
+
+	if w.Size != nil {
+		arg = append(arg, "-l", *w.Size)
+	}
+
+	if w.TargetPane != nil {
+		arg = append(arg, "-t", *w.TargetPane)
+	}
+
+	if w.Format != nil {
+		arg = append(arg, "-F", *w.Format)
+	}
+
+	if w.ShellCommand != nil {
+		arg = append(arg, *w.ShellCommand)
 	}
 
 	return

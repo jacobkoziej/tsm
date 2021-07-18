@@ -1,4 +1,4 @@
-// tsm/tmux -- tmux command execution
+// main.go -- tmux interface module
 // Copyright (C) 2021  Jacob Koziej <jacobkoziej@gmail.com>
 //
 // This program is free software: you can redistribute it and/or modify
@@ -14,5 +14,12 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-// tmux command execution
+// Package tmux is an API for interfacing with tmux.
 package tmux
+
+// Tmux represents possible tmux commands that can be executed.  Each method is
+// meant to return the appropriate arguments for its associated type.  On error
+// methods return nil.
+type Tmux interface {
+	New() (arg []string)
+}

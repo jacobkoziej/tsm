@@ -16,55 +16,51 @@
 
 package tmux
 
-// start directory properties
-type StartDir struct {
-	set bool
-	dir string
-}
-
-// initial shell command properties
-type InitShellCmd struct {
-	exec bool
-	cmd  string
-}
-
-// name properties
-type Name struct {
-	set  bool
-	name string
-}
-
-// socket properties
-type Socket struct {
-	exists bool
-	path   string
-}
-
-// tmux pane properties
-type Pane struct {
-	startDir     *StartDir
-	initShellCmd *InitShellCmd
-	done         bool
-}
-
-// tmux window properties
-type Window struct {
-	name *Name
-	pane []*Pane
-	done bool
-}
-
-// tmux session properties
+// Session represents a tmux session to create.
 type Session struct {
-	name   *Name
-	window []*Window
-	done   bool
+	BehaveAttachSession bool    // -A
+	DetachSession       bool    // -d
+	DetachClients       bool    // -D
+	IgnoreEnvironment   bool    // -E
+	PrintInfo           bool    // -P
+	DetachClient        bool    // -X
+	StartDirectory      *string // -c
+	Format              *string // -F
+	WindowName          *string // -n
+	SessionName         *string // -s
+	GroupName           *string // -t
+	Width               *string // -x
+	Height              *string // -y
+	ShellCommand        *string
 }
 
-// tmux server properties
-type Server struct {
-	name    *Name
-	socket  *Socket
-	session []*Session
-	done    bool
+// Window represents a tmux window to create.
+type Window struct {
+	NextIndexUp     bool     // -a
+	DontMakeCurrent bool     // -d
+	DestroyTarget   bool     // -k
+	PrintInfo       bool     // -P
+	StartDirectory  *string  // -c
+	Environment     []string // -e
+	Format          *string  // -F
+	WindowName      *string  // -n
+	TargetWindow    *string  // -t
+	ShellCommand    *string
+}
+
+// Pane represents a tmux pane to create.
+type Pane struct {
+	AboveTarget     bool     // -b
+	DontMakeCurrent bool     // -d
+	FullWindow      bool     // -f
+	HorizontalSplit bool     // -h
+	ForwardStdin    bool     // -I
+	VerticalSplit   bool     // -v
+	PrintInfo       bool     // -P
+	StartDirectory  *string  // -c
+	Environment     []string // -e
+	Size            *string  // -l
+	TargetPane      *string  // -t
+	Format          *string  // -F
+	ShellCommand    *string
 }
