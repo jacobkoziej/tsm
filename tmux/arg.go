@@ -28,8 +28,7 @@ func (s *Session) New() (arg []string) {
 		arg = append(arg, "-A")
 	}
 
-	// session isn't attached by default
-	if !s.attachSession {
+	if s.detachSession {
 		arg = append(arg, "-d")
 	}
 
@@ -92,8 +91,7 @@ func (w *Window) New() (arg []string) {
 		arg = append(arg, "-a")
 	}
 
-	// window isn't made current by default
-	if !w.makeCurrent {
+	if w.dontMakeCurrent {
 		arg = append(arg, "-d")
 	}
 
