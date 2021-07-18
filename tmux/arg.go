@@ -16,9 +16,8 @@
 
 package tmux
 
-// ArgNewSession generates arguments to create a new session from the Session
-// receiver.
-func (s *Session) ArgNewSession() (arg []string) {
+// New generates arguments to create a new session from the Session receiver.
+func (s *Session) New() (arg []string) {
 	if s == nil {
 		return
 	}
@@ -81,9 +80,8 @@ func (s *Session) ArgNewSession() (arg []string) {
 	return
 }
 
-// ArgNewWindow generates arguments to create a new window from the Window
-// receiver.
-func (w *Window) ArgNewWindow() (arg []string) {
+// New generates arguments to create a new window from the Window receiver.
+func (w *Window) New() (arg []string) {
 	if w == nil {
 		return
 	}
