@@ -47,3 +47,20 @@ type Window struct {
 	TargetWindow    *string  // -t
 	ShellCommand    *string
 }
+
+// Pane represents a tmux pane to create.
+type Pane struct {
+	AboveTarget     bool     // -b
+	DontMakeCurrent bool     // -d
+	FullWindow      bool     // -f
+	HorizontalSplit bool     // -h
+	ForwardStdin    bool     // -I
+	VerticalSplit   bool     // -v
+	PrintInfo       bool     // -P
+	StartDirectory  *string  // -c
+	Environment     []string // -e
+	Size            *string  // -l
+	TargetPane      *string  // -t
+	Format          *string  // -F
+	ShellCommand    *string
+}
