@@ -24,56 +24,56 @@ func (s *Session) New() (arg []string) {
 
 	arg = append(arg, "new-session")
 
-	if s.behaveAttachSession {
+	if s.BehaveAttachSession {
 		arg = append(arg, "-A")
 	}
 
-	if s.detachSession {
+	if s.DetachSession {
 		arg = append(arg, "-d")
 	}
 
-	if s.detachClients {
+	if s.DetachClients {
 		arg = append(arg, "-D")
 	}
 
-	if s.ignoreEnvironment {
+	if s.IgnoreEnvironment {
 		arg = append(arg, "-E")
 	}
 
-	if s.printInfo {
+	if s.PrintInfo {
 		arg = append(arg, "-P")
 	}
 
-	if s.detachClient {
+	if s.DetachClient {
 		arg = append(arg, "-X")
 	}
 
-	if s.startDirectory != nil {
-		arg = append(arg, "-c", *s.startDirectory)
+	if s.StartDirectory != nil {
+		arg = append(arg, "-c", *s.StartDirectory)
 	}
 
-	if s.format != nil {
-		arg = append(arg, "-F", *s.format)
+	if s.Format != nil {
+		arg = append(arg, "-F", *s.Format)
 	}
 
-	if s.windowName != nil {
-		arg = append(arg, "-n", *s.windowName)
+	if s.WindowName != nil {
+		arg = append(arg, "-n", *s.WindowName)
 	}
 
-	if s.groupName != nil {
-		arg = append(arg, "-t", *s.groupName)
+	if s.GroupName != nil {
+		arg = append(arg, "-t", *s.GroupName)
 	}
 
-	if s.width != nil {
-		arg = append(arg, "-x", *s.width)
+	if s.Width != nil {
+		arg = append(arg, "-x", *s.Width)
 	}
 
-	if s.height != nil {
-		arg = append(arg, "-y", *s.height)
+	if s.Height != nil {
+		arg = append(arg, "-y", *s.Height)
 	}
 
-	if s.shellCommand != nil {
-		arg = append(arg, *s.shellCommand)
+	if s.ShellCommand != nil {
+		arg = append(arg, *s.ShellCommand)
 	}
 
 	return
@@ -87,42 +87,42 @@ func (w *Window) New() (arg []string) {
 
 	arg = append(arg, "new-window")
 
-	if w.nextIndexUp {
+	if w.NextIndexUp {
 		arg = append(arg, "-a")
 	}
 
-	if w.dontMakeCurrent {
+	if w.DontMakeCurrent {
 		arg = append(arg, "-d")
 	}
 
-	if w.destroyTarget {
+	if w.DestroyTarget {
 		arg = append(arg, "-k")
 	}
 
-	if w.printInfo {
+	if w.PrintInfo {
 		arg = append(arg, "-P")
 	}
 
-	if w.startDirectory != nil {
-		arg = append(arg, "-c", *w.startDirectory)
+	if w.StartDirectory != nil {
+		arg = append(arg, "-c", *w.StartDirectory)
 	}
 
-	if w.environment != nil {
-		for _, env := range w.environment {
+	if w.Environment != nil {
+		for _, env := range w.Environment {
 			arg = append(arg, "-e", env)
 		}
 	}
 
-	if w.format != nil {
-		arg = append(arg, "-F", *w.format)
+	if w.Format != nil {
+		arg = append(arg, "-F", *w.Format)
 	}
 
-	if w.windowName != nil {
-		arg = append(arg, "-n", *w.windowName)
+	if w.WindowName != nil {
+		arg = append(arg, "-n", *w.WindowName)
 	}
 
-	if w.targetWindow != nil {
-		arg = append(arg, "-t", *w.targetWindow)
+	if w.TargetWindow != nil {
+		arg = append(arg, "-t", *w.TargetWindow)
 	}
 
 	if w.shellCommand != nil {

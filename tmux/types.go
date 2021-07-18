@@ -18,32 +18,32 @@ package tmux
 
 // Session represents a tmux session to create.
 type Session struct {
-	behaveAttachSession bool
-	detachSession       bool
-	detachClients       bool
-	ignoreEnvironment   bool
-	printInfo           bool
-	detachClient        bool
-	startDirectory      *string
-	format              *string
-	windowName          *string
-	sessionName         *string
-	groupName           *string
-	width               *string
-	height              *string
-	shellCommand        *string
+	BehaveAttachSession bool
+	DetachSession       bool
+	DetachClients       bool
+	IgnoreEnvironment   bool
+	PrintInfo           bool
+	DetachClient        bool
+	StartDirectory      *string
+	Format              *string
+	WindowName          *string
+	SessionName         *string
+	GroupName           *string
+	Width               *string
+	Height              *string
+	ShellCommand        *string
 }
 
 // Window represents a tmux window to create.
 type Window struct {
-	nextIndexUp     bool
-	dontMakeCurrent bool
-	destroyTarget   bool
-	printInfo       bool
-	startDirectory  *string
-	environment     []string
-	format          *string
-	windowName      *string
-	targetWindow    *string
-	shellCommand    *string
+	NextIndexUp     bool
+	DontMakeCurrent bool
+	DestroyTarget   bool
+	PrintInfo       bool
+	StartDirectory  *string
+	Environment     []string
+	Format          *string
+	WindowName      *string
+	TargetWindow    *string
+	ShellCommand    *string
 }
