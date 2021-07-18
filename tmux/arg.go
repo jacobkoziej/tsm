@@ -125,8 +125,8 @@ func (w *Window) New() (arg []string) {
 		arg = append(arg, "-t", *w.TargetWindow)
 	}
 
-	if w.shellCommand != nil {
-		arg = append(arg, *w.shellCommand)
+	if w.ShellCommand != nil {
+		arg = append(arg, *w.ShellCommand)
 	}
 
 	return
